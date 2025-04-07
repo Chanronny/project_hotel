@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     'pages.apps.PagesConfig',
     'listings.apps.ListingsConfig',
+    'roomtypes.apps.RoomtypesConfig',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,17 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'hotel/static')]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+MESSAGE_TAGS = {
+    messages.ERROR : 'danger',
+    messages.SUCCESS : 'success'   
+}
